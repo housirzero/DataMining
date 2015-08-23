@@ -16,14 +16,14 @@
     %% find label of each test object
     for i = 1 : testNum
         
-       %% find the k closest objects in train_set
+        %% find the k closest objects in train_set
         dis = zeros(n,1);
         for j = 1 : n
             dis(j) = norm(test_set(i)-train_set(j)); % Euclidean distance
         end
         [d, index] = sort(dis); % sort dis by ascending order, in order to find top-k
         
-       %% let the k objects vote the label of the test object
+        %% let the k objects vote the label of the test object
         cnt = zeros(c,1); % appear times of each label
         for j = 1 : k
             ind = find(labels, train_labels(index(j)));
