@@ -26,7 +26,7 @@
         %% let the k objects vote the label of the test object
         cnt = zeros(c,1); % appear times of each label
         for j = 1 : k
-            ind = find(labels, train_labels(index(j)));
+            ind = find(labels==train_labels(index(j)));
             cnt(ind) = cnt(ind) + 1;
         end
         [maxcnt, max_index] = max(cnt);
