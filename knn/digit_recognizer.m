@@ -1,4 +1,4 @@
-train_data = csvread('train1.csv',1,0);
+﻿train_data = csvread('train1.csv',1,0);
 train_labels = train_data(:,1);
 [n, d] = size(train_data);
 train_set = train_data(:,2:d);
@@ -10,8 +10,9 @@ test_labels = knn(train_set,train_labels,test_set,11);
 
 % write to file
 n = size(test_labels,1);
-fid = fopen('result_knn.csv', 'w');
+fid = fopen('submission_knn.csv', 'w');
+fprintf(fid, 'ImageId,Label\r\n');
 for i = 1:n
-	fprintf(fid, '%g\r\n', test_labels(i));
+	fprintf(fid, '%g,%g\r\n', i, result(i));
 end
 fclose(fid);
